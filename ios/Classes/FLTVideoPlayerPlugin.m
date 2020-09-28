@@ -288,6 +288,16 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
       _eventSink(@{@"event" : @"bufferingEnd"});
     }
   }
+  if (@available(iOS 10.0, *)) {
+        AVPlayerTimeControlStatus status = _player.timeControlStatus;
+        if (status == AVPlayerTimeControlStatusPlaying) {
+            if (_eventSink != nil) {
+                _eventSink(@{@"event" : @"bufferingEnd"});
+            }
+        }
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 - (void)updatePlayingState {
