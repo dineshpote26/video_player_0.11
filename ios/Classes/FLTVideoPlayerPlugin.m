@@ -318,6 +318,22 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
     }
 }
 
+- (BOOL) checkIfScreenCapturing {
+
+    if (@available(iOS 11.0, *)) {
+
+        BOOL isCaptured = [[UIScreen mainScreen] isCaptured];
+        if (isCaptured == true) {
+            return true;
+        }
+
+    } else {
+       // Fallback on earlier versions
+    }
+    return false;
+
+}
+
 - (void)updatePlayingState {
   if (!_isInitialized) {
     return;
@@ -633,22 +649,6 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
   } else {
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
   }
-}
-
-- (BOOL) checkIfScreenCapturing {
-
-    if (@available(iOS 11.0, *)) {
-
-        BOOL isCaptured = [[UIScreen mainScreen] isCaptured];
-        if (isCaptured == true) {
-            return true;
-        }
-
-    } else {
-       // Fallback on earlier versions
-    }
-    return false;
-
 }
 
 @end
