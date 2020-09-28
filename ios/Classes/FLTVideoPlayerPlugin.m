@@ -298,6 +298,20 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
     } else {
         // Fallback on earlier versions
     }
+
+     if ([self checkIfScreenCapturing]) {
+        if (_eventSink != nil) {
+            [_player pause];
+            _eventSink([FlutterError
+                errorWithCode:@"VideoRecordingError"
+                message: @"VideoRecordingError"
+                details:nil]);
+        }
+    } else {
+        if([_player rate] != 0){
+            [_player play];
+        }
+    }
 }
 
 - (void)updatePlayingState {
