@@ -363,7 +363,7 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
    [_player seekToTime:CMTimeMake(location, 1000) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero completionHandler:^(BOOL finished) {
             NSLog(@"finished: %d", finished);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self->_player play];
+                //[self->_player play];
             });
         }];
 }
