@@ -79,13 +79,13 @@ final class VideoPlayer {
     if (isHTTP(uri)) {
       dataSourceFactory =
           new DefaultHttpDataSourceFactory(
-              "ExoPlayer",
+              "JioTv.Learn",
               null,
               DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
               DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
               true);
     } else {
-      dataSourceFactory = new DefaultDataSourceFactory(context, "ExoPlayer");
+      dataSourceFactory = new DefaultDataSourceFactory(context, "JioTv.Learn");
     }
 
     MediaSource mediaSource = buildMediaSource(uri, dataSourceFactory, formatHint, context);
